@@ -24,6 +24,7 @@ export default function OpenGraphImage() {
       >
         <div
           style={{
+            display: "flex",
             fontSize: 56,
             fontWeight: 700,
             letterSpacing: "-0.02em",
@@ -34,6 +35,7 @@ export default function OpenGraphImage() {
         </div>
         <div
           style={{
+            display: "flex",
             fontSize: 24,
             color: "#57534E",
             maxWidth: 800,
@@ -46,6 +48,7 @@ export default function OpenGraphImage() {
         </div>
         <div
           style={{
+            display: "flex",
             marginTop: 48,
             padding: "12px 24px",
             background: "rgba(124, 58, 237, 0.12)",

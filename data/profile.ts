@@ -107,7 +107,7 @@ export interface BlogPost {
   tags?: string[];
   publishedAt?: string;
   featured?: boolean;
-  type?: "Whitepaper";
+  type?: "Whitepaper" | "Blog";
 }
 
 export const person: Person = {
