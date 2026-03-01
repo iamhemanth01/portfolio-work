@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: 124 58 237;
+    --background: 255 255 255;
+    --foreground: 10 10 10;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Subtle texture overlay */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Ensure high-contrast text on light background (fallbacks) */
+.text-studio-fg {
+  color: #0A0A0A;
+}
+.text-studio-muted {
+  color: #44403C;
+}
+.bg-studio-bg {
+  background-color: #FFFFFF;
+}
+.bg-studio-surface {
+  background-color: #FFFFFF;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-accent;
+}
