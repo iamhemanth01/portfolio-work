@@ -195,9 +195,8 @@ export default function HomePage() {
           <h2 className="font-heading text-2xl font-semibold tracking-tight text-studio-fg md:text-3xl">
             Experience
           </h2>
-          <p className="mt-2 max-w-2xl font-body text-sm font-medium text-studio-muted">
-            6+ years of experience leading solution design, presales engagements, and operational diagnostics.
-            Changing ambiguous business challenges into structured, data-backed transformation roadmaps.
+          <p className="mt-2 w-full font-body text-sm font-medium leading-relaxed text-justify text-studio-muted">
+            6+ years of experience leading solution design, presales engagements, and operational diagnostics, changing ambiguous business challenges into structured, data-backed transformation roadmaps.
           </p>
           <div className="mt-6">
             <ExperienceSection experience={experience} />

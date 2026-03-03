@@ -11,6 +11,9 @@ import { Container } from "@/components/layout/Container";
 import { contactConfig } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
+const WHATSAPP_URL =
+  "https://wa.me/919148020162?text=Hi%20Hemanth,%20I%20came%20across%20your%20work%20and%20would%20like%20to%20explore%20consulting,%20advisory,%20or%20collaborative%20opportunities.";
+
 function getQuickLinks() {
   return [
     {
@@ -22,11 +25,12 @@ function getQuickLinks() {
       external: true,
     },
     {
-      label: "Phone",
+      label: "Call / WhatsApp",
       iconSrc: "/icons/phone.png",
       primary: "Speak directly",
       subtext: "For urgent or time-sensitive discussions",
       isPhone: true,
+      whatsappHref: WHATSAPP_URL,
     },
     {
       label: "Topmate",
@@ -154,12 +158,16 @@ export function ContactSection() {
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {getQuickLinks().map((link) =>
                   "isPhone" in link && link.isPhone ? (
-                    <div
+                    <a
                       key={link.label}
+                      href={"whatsappHref" in link ? link.whatsappHref : WHATSAPP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={cn(
                         "flex min-w-0 flex-col rounded-xl border-2 border-studio-border bg-neutral-100 px-3 py-2.5 shadow-sm min-h-[180px] transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/30 hover:bg-neutral-200/80",
-                        "focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 focus-within:outline-none"
+                        "focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 focus-within:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                       )}
+                      aria-label="Open WhatsApp with pre-filled message"
                     >
                       <span className="flex items-center justify-between gap-1.5">
                         <span className="relative h-8 w-8 shrink-0">
@@ -174,7 +182,11 @@ export function ContactSection() {
                         </span>
                         <button
                           type="button"
-                          onClick={handleCopyPhone}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleCopyPhone();
+                          }}
                           className="rounded-lg p-1.5 text-studio-muted transition-colors hover:bg-studio-border/50 hover:text-studio-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                           aria-label={copiedPhone ? "Copied" : "Copy phone number"}
                         >
@@ -199,7 +211,7 @@ export function ContactSection() {
                       <span className="mt-0.5 font-body text-xs text-studio-muted">
                         {link.subtext}
                       </span>
-                    </div>
+                    </a>
                   ) : (
                     <a
                       key={link.label}
